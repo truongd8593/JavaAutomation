@@ -20,14 +20,11 @@ public class TC001 {
 
 	@Test
 	public void testGoogle() throws Exception {
-		ReadExcel ex = new ReadExcel("DEMO1");
-		String key = ex.getVar("key");
-		logger.info("Read key --- " + key);
 		WebDriver driver = DriverFactory.createDriver();
 		WebSupport webSupport = new WebSupport(driver);
 		driver.get("https://www.google.com/");
 		logger.info("GO TO GOOGLE");
-		webSupport.sendKeysToElement("//*[@name='q']", key);
+		webSupport.sendKeysToElement("//*[@name='q']", "Selenium");
 		driver.findElement(By.xpath("//*[@name='q']")).sendKeys(Keys.ENTER);
 		Thread.sleep(3000);
 		driver.quit();
