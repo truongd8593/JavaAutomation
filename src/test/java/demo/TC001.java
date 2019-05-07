@@ -17,15 +17,18 @@ import common.functions.WebSupport;
 public class TC001 {
 	
 	public static final Logger logger = LogManager.getLogger("DEMO");
-
+	
 	@Test
-	public void testGoogle() throws Exception {
+	public void testGoogleSearch() throws Exception {
 		WebDriver driver = DriverFactory.createDriver();
 		WebSupport webSupport = new WebSupport(driver);
 		driver.get("https://www.google.com/");
+		driver.manage().window().maximize();
 		logger.info("GO TO GOOGLE");
-		webSupport.sendKeysToElement("//*[@name='q']", "Selenium");
+		webSupport.sendKeysToElement("//*[@name='q']", "TMA Solutions");
 		driver.findElement(By.xpath("//*[@name='q']")).sendKeys(Keys.ENTER);
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//a[@href='https://www.tma.vn/']")).click();
 		Thread.sleep(3000);
 		driver.quit();
 	}
