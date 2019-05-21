@@ -1,5 +1,9 @@
-D:\SWAT\Support\OrangeFitness\WebProject\src\test\java\ObjectSelector\consSelector.java
-D:\SWAT\Support\OrangeFitness\WebProject\src\test\java\common\functions\DriverFactory.java
-D:\SWAT\Support\OrangeFitness\WebProject\src\test\java\common\functions\ReadExcel.java
-D:\SWAT\Support\OrangeFitness\WebProject\src\test\java\common\functions\WebSupport.java
-D:\SWAT\Support\OrangeFitness\WebProject\src\test\java\demo\TC001.java
+C:\Users\HP\Documents\GitHub\JavaAutomation\src\test\java\demo\TC002_Login_TravelWithUs_dot_asia.java
+C:\Users\HP\Documents\GitHub\JavaAutomation\src\test\java\common\functions\WebSupport.java
+C:\Users\HP\Documents\GitHub\JavaAutomation\src\test\java\demo\TC003_CreateTrip_TravelWithUs_dot_asia.java
+C:\Users\HP\Documents\GitHub\JavaAutomation\src\test\java\ObjectSelector\consSelector.java
+C:\Users\HP\Documents\GitHub\JavaAutomation\src\test\java\TravelWithUs\LoginPage.java
+C:\Users\HP\Documents\GitHub\JavaAutomation\src\test\java\common\functions\DriverFactory.java
+C:\Users\HP\Documents\GitHub\JavaAutomation\src\test\java\TravelWithUs\LoginSelector.java
+C:\Users\HP\Documents\GitHub\JavaAutomation\src\test\java\demo\TC001.java
+C:\Users\HP\Documents\GitHub\JavaAutomation\src\test\java\common\functions\ReadExcel.java
