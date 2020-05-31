@@ -26,9 +26,9 @@ public class TC001 {
 		driver.manage().window().maximize();
 		logger.info("GO TO GOOGLE");
 		webSupport.sendKeysToElement("//*[@name='q']", "TMA Solutions");
-		driver.findElement(By.xpath("//*[@name='q']")).sendKeys(Keys.ENTER);
+		webSupport.clickOnEnter("//*[@name='q']");
 		Thread.sleep(1000);
-		driver.findElement(By.xpath("//a[@href='https://www.tma.vn/']")).click();
+		webSupport.clickOnElement("//a[@href='https://www.tma.vn/']");
 		Thread.sleep(3000);
 		driver.quit();
 	}

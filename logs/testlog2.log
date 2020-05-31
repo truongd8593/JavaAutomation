@@ -1846,3 +1846,7 @@
 2019-05-21 22:26:40 [TestNG-test=demo suite-1] INFO  DEMO - GO TO travelwithus.asia ...
 2019-05-21 22:26:42 [TestNG-test=demo suite-1] INFO  DEMO - LOGIN TO travelwithus.asia succeeded.
 2019-05-21 22:26:47 [TestNG-test=demo suite-1] INFO  DEMO - Creating trip succeeded.
+2020-05-19 04:16:35 [main] INFO  DEMO - GO TO travelwithus.asia ...
+2020-05-19 04:19:32 [main] INFO  DEMO - GO TO GOOGLE
+2020-05-30 05:43:06 [main] INFO  DEMO - GO TO GOOGLE
+2020-05-31 07:01:24 [main] INFO  DEMO - GO TO GOOGLE

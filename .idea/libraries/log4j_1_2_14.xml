@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="log4j-1.2.14">
+    <CLASSES>
+      <root url="file://$MAVEN_REPOSITORY$/log4j/log4j/1.2.14" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$MAVEN_REPOSITORY$/log4j/log4j/1.2.14" />
+    </SOURCES>
+    <jarDirectory url="file://$MAVEN_REPOSITORY$/log4j/log4j/1.2.14" recursive="false" />
+    <jarDirectory url="file://$MAVEN_REPOSITORY$/log4j/log4j/1.2.14" recursive="false" type="SOURCES" />
+  </library>
+</component>
