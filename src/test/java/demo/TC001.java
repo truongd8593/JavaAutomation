@@ -24,6 +24,13 @@ public class TC001 {
 		WebSupport webSupport = new WebSupport(driver);
 		driver.get("https://www.google.com/");
 		driver.manage().window().maximize();
+		String webTitle = "Google";
+		Boolean resWebtTitle = false;
+		resWebtTitle = webSupport.verifyWebTitle(webTitle);
+		if (resWebtTitle == true)
+			logger.info("The web title is verified as 'Google'");
+		else
+			logger.info("Wrong web title");
 		logger.info("GO TO GOOGLE");
 		webSupport.sendKeysToElement("//*[@name='q']", "TMA Solutions");
 		webSupport.clickOnEnter("//*[@name='q']");

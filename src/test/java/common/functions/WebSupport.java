@@ -94,5 +94,17 @@ public class WebSupport {
 		return result;
 	}
 
+	public Boolean verifyWebTitle(String expectedTitle){
+		Boolean result = false;
+		try{
+			String actualTitle = driver.getTitle();
+			if (actualTitle.equalsIgnoreCase(expectedTitle))
+				result = true;
+		} catch (Exception e) {
+			result = false;
+		}
+		return result;
+	}
+
 
 }
