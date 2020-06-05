@@ -32,11 +32,15 @@ public class TC001 {
 		else
 			logger.info("Wrong web title");
 		logger.info("GO TO GOOGLE");
+		webSupport.captureScreenshot(driver, "Screenshots/TC001_ss1.png");
 		webSupport.sendKeysToElement("//*[@name='q']", "TMA Solutions");
+		webSupport.captureScreenshot(driver, "Screenshots/TC001_ss2.png");
 		webSupport.clickOnEnter("//*[@name='q']");
 		Thread.sleep(1000);
+		webSupport.captureScreenshot(driver, "Screenshots/TC001_ss3.png");
 		webSupport.clickOnElement("//a[@href='https://www.tma.vn/']");
 		Thread.sleep(3000);
+		webSupport.captureScreenshot(driver, "Screenshots/TC001_ss4.png");
 		driver.quit();
 	}
 

@@ -1,6 +1,7 @@
 package common.functions;
 
 import java.util.Set;
+import java.io.File;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -10,6 +11,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.OutputType;
+import org.apache.commons.io.FileUtils;
 
 import antlr.collections.List;
 
@@ -104,6 +108,28 @@ public class WebSupport {
 			result = false;
 		}
 		return result;
+	}
+
+	/**
+	 * This function will take screenshot
+	 * @param webdriver
+	 * @param fileWithPath
+	 * @throws Exception
+	 */
+	public void captureScreenshot(WebDriver webdriver,String fileWithPath) throws Exception{
+
+		//Convert web driver object to TakeScreenshot
+		TakesScreenshot scrShot =((TakesScreenshot)webdriver);
+
+		//Call getScreenshotAs method to create image file
+		File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+
+		//Move image file to new destination
+		File DestFile=new File(fileWithPath);
+
+		//Copy file at destination
+		FileUtils.copyFile(SrcFile, DestFile);
+
 	}
 
 
