@@ -27,29 +27,33 @@ public class WebSupport {
 		this.act = new Actions(driver);
 	}
 	
-	public void waitForLoading() {
+	public WebSupport waitForLoading() {
 		String spin = "//div[@id='system-loader']";
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(spin)));
+		return this;
 	}
 
-	public void waitForPopUp() {
+	public WebSupport waitForPopUp() {
 		String popup ="//*[@id='toast-container']/descendant::span";
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(popup)));
+		return this;
 	}
 
-	public void clickOnElement(String xpath) {
+	public WebSupport clickOnElement(String xpath) {
 		WebElement elm = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 		act.moveToElement(elm).build().perform();
 		elm.click();
+		return this;
 	}
 
-	public void clickOnElement(WebElement elm) {
+	public WebSupport clickOnElement(WebElement elm) {
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(elm));
 		act.moveToElement(element).build().perform();
 		element.click();
+		return this;
 	}
 	
-	public void switchToPopUp() {
+	public WebSupport switchToPopUp() {
 		
 		//String parentWindowHandler = driver.getWindowHandle(); // Store your parent window
 		String subWindowHandler = null;
@@ -60,25 +64,29 @@ public class WebSupport {
 		}
 		driver.switchTo().window(subWindowHandler); // switch to popup window
 		//driver.switchTo().window(parentWindowHandler);  // switch back to parent window
+		return this;
 	}
 
-	public void clickOnEnter(String xpath) {
+	public WebSupport clickOnEnter(String xpath) {
 		WebElement elm = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 		act.moveToElement(elm).build().perform();
-		elm.sendKeys(Keys.ENTER);;
+		elm.sendKeys(Keys.ENTER);
+		return this;
 	}
 	
-	public void sendKeysToElement(String xpath, String keys) {
+	public WebSupport sendKeysToElement(String xpath, String keys) {
 		WebElement elm = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 		act.moveToElement(elm).build().perform();
 		//elm.clear();
 		elm.sendKeys(keys);
+		return this;
 	}
-	public void sendKeysToElementToEdit(String xpath, String keys) {
+	public WebSupport sendKeysToElementToEdit(String xpath, String keys) {
 		WebElement elm = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 		act.moveToElement(elm).build().perform();
 		elm.clear();
 		elm.sendKeys(keys);
+		return this;
 	}
 	
 	public String GetText(String xpath) {
@@ -118,7 +126,7 @@ public class WebSupport {
 	 * @param fileWithPath
 	 * @throws Exception
 	 */
-	public void captureScreenshot(WebDriver webdriver,String fileWithPath) throws Exception{
+	public WebSupport captureScreenshot(WebDriver webdriver,String fileWithPath) throws Exception{
 
 		//Convert web driver object to TakeScreenshot
 		TakesScreenshot scrShot =((TakesScreenshot)webdriver);
@@ -132,7 +140,26 @@ public class WebSupport {
 		//Copy file at destination
 		FileUtils.copyFile(SrcFile, DestFile);
 
+		return this;
+
 	}
 
+	public WebSupport navigateToUrl(String url) {
+		driver.get(url);
+		return this;
+	}
 
+	public WebSupport maximizeBrowserWindow() {
+		driver.manage().window().maximize();
+		return this;
+	}
+
+	public WebSupport waitSomeSeconds(int numberOfSeconds) {
+		try {
+			Thread.sleep(numberOfSeconds * 1000);
+		} catch(Exception e){
+			System.out.println("Warning: Some Other exception");
+		}
+		return this;
+	}
 }
