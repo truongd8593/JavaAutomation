@@ -77,7 +77,6 @@ public class WebSupport {
 	public WebSupport sendKeysToElement(String xpath, String keys) {
 		WebElement elm = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 		act.moveToElement(elm).build().perform();
-		//elm.clear();
 		elm.sendKeys(keys);
 		return this;
 	}
