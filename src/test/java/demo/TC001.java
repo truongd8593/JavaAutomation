@@ -3,9 +3,9 @@ package demo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import common.functions.DriverFactory;
@@ -22,11 +22,19 @@ public class TC001 {
 	private final String googleHomePage = "https://www.google.com/";
 
 	private final String googleHomePageTitle = "Google";
+
+	private WebSupport webSupport;
+
+	private WebDriver driver;
+
+	@BeforeTest
+	public void testSetup() throws Exception {
+		driver = DriverFactory.createDriver();
+		webSupport = new WebSupport(driver);
+	}
 	
 	@Test
 	public void testGoogleSearch() throws Exception {
-		WebDriver driver = DriverFactory.createDriver();
-		WebSupport webSupport = new WebSupport(driver);
 		webSupport.navigateToUrl(googleHomePage)
 				.maximizeBrowserWindow();
 		Assert.assertTrue(webSupport.verifyWebTitle(googleHomePageTitle));
@@ -39,6 +47,10 @@ public class TC001 {
 				.clickOnElement(tmaSearchResult)
 				.waitSomeSeconds(3)
 				.captureScreenshot(driver, "Screenshots/TC001_ss4.png");
+	}
+
+	@AfterTest
+	public void testTeardown() {
 		driver.quit();
 	}
 
