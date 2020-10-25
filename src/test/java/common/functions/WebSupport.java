@@ -9,13 +9,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.OutputType;
 import org.apache.commons.io.FileUtils;
-
-import antlr.collections.List;
 
 
 public class WebSupport {
@@ -24,24 +21,32 @@ public class WebSupport {
 	WebDriverWait wait;
 	Actions act;
 	
-	public WebSupport(WebDriver driver123) {
-		this.driver = driver123;
+	public WebSupport(WebDriver driver) {
+		this.driver = driver;
 		this.wait = new WebDriverWait(this.driver, 300);
-		this.act = new Actions(driver123);
+		this.act = new Actions(driver);
 	}
 	
 	public void waitForLoading() {
 		String spin = "//div[@id='system-loader']";
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(spin)));
 	}
+
 	public void waitForPopUp() {
 		String popup ="//*[@id='toast-container']/descendant::span";
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(popup)));
 	}
+
 	public void clickOnElement(String xpath) {
 		WebElement elm = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 		act.moveToElement(elm).build().perform();
 		elm.click();
+	}
+
+	public void clickOnElement(WebElement elm) {
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(elm));
+		act.moveToElement(element).build().perform();
+		element.click();
 	}
 	
 	public void switchToPopUp() {
@@ -56,10 +61,7 @@ public class WebSupport {
 		driver.switchTo().window(subWindowHandler); // switch to popup window
 		//driver.switchTo().window(parentWindowHandler);  // switch back to parent window
 	}
-	
-	
-	
-	
+
 	public void clickOnEnter(String xpath) {
 		WebElement elm = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 		act.moveToElement(elm).build().perform();
