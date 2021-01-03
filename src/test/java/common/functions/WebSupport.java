@@ -20,6 +20,10 @@ public class WebSupport {
 	WebDriver driver;
 	WebDriverWait wait;
 	Actions act;
+
+	private By spin = By.xpath("//div[@id='system-loader']");
+
+	private By popup = By.xpath("//*[@id='toast-container']/descendant::span");
 	
 	public WebSupport(WebDriver driver) {
 		this.driver = driver;
@@ -28,14 +32,12 @@ public class WebSupport {
 	}
 	
 	public WebSupport waitForLoading() {
-		String spin = "//div[@id='system-loader']";
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(spin)));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(spin));
 		return this;
 	}
 
 	public WebSupport waitForPopUp() {
-		String popup ="//*[@id='toast-container']/descendant::span";
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(popup)));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(popup));
 		return this;
 	}
 
@@ -50,6 +52,11 @@ public class WebSupport {
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(elm));
 		act.moveToElement(element).build().perform();
 		element.click();
+		return this;
+	}
+
+	public WebSupport clickOnElement(By locator) {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).click();
 		return this;
 	}
 	
@@ -88,7 +95,7 @@ public class WebSupport {
 		return this;
 	}
 	
-	public String GetText(String xpath) {
+	public String getText(String xpath) {
 		WebElement elm = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 		act.moveToElement(elm).build().perform();
 		return elm.getText();
@@ -99,7 +106,7 @@ public class WebSupport {
 		try {
 			WebElement elm = driver.findElement(By.xpath(xpath));
 			act.moveToElement(elm).build().perform();
-			Thread.sleep(1000);
+			waitSomeSeconds(1);
 			result = true;
 		} catch (Exception e) {
 			result = false;

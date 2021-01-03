@@ -2,7 +2,7 @@ package ObjectSelector;
 import common.functions.ReadExcel;
 import common.functions.WebSupport;
 
-public class consSelector {
+public class ConstantSelector {
 //		public static  final ReadExcel ex = new ReadExcel("DEMO1");
 //		public   final String URL = ex.getConfigData("URL");
 //		public  final String username = ex.getConfigData("UserName");
