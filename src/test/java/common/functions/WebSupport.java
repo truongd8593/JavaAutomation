@@ -1,5 +1,6 @@
 package common.functions;
 
+import java.time.Duration;
 import java.util.Set;
 import java.io.File;
 
@@ -38,6 +39,11 @@ public class WebSupport {
 
 	public WebSupport waitForPopUp() {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(popup));
+		return this;
+	}
+
+	public WebSupport waitUntilPageContainsElement(String xpath, long seconds) {
+		wait.withTimeout(Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 		return this;
 	}
 
